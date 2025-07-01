@@ -123,7 +123,7 @@ def main():
         lambda nn: "CIDADE" if G.degree[nn] > 4 else "RODOVIA"
     )
     out.to_parquet(
-        OUTPUT_DIR/"sites_new_mip_withflow4.parquett",
+        OUTPUT_DIR/"sites_new_mip_withflow4.parquet",
         index=False
     )
     print(f"✓ Salvou {len(chosen)} estações em {OUTPUT_DIR}")

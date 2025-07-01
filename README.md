@@ -150,7 +150,7 @@ Em cada experimento, testamos três valores de R_KM:
 ## 7. Como rodar
 ```bash
 cd scripts
-bash run_all_withoutflow.sh
+bash WithoutFlow.sh
 ```
 
 ---
@@ -230,17 +230,64 @@ Em cada experimento, testamos:
 ## 7. Como rodar
 ```bash
 cd scripts
-bash run_all_withflow.sh
+bash WithFlow.sh
 ```
 
 ## 8. Resultados
 
 Os resultados estão disponíveis na pasta `WithtFlow`, no arquivo: `map_visualization.ipynb`
 
+---
+
+## ➕ Novos Experimentos de Projeção (2025–2040)
+
+Adicionamos agora duas variações de projeção considerando o crescimento da frota EV no Brasil:
+
+### 1. Projeção **WithFlow + Pontos Existentes**
+- **O que**: reutiliza os carregadores já instalados como cobertura inicial e, em seguida, resolve um MIP bicritério (minimiza nº de estações novas e maximiza fluxo coberto) ajustando as metas de cobertura por UF segundo a frota projetada.
+- **Onde**: scripts em `Projection/WithFlow/`
+- **Arquivos gerados**:  
+  - `Projection/WithFlow/2025/sites_new_mip_withflow_2025.parquet`  
+  - `Projection/WithFlow/2030/sites_new_mip_withflow_2030.parquet`  
+  - `Projection/WithFlow/2035/sites_new_mip_withflow_2035.parquet`  
+  - `Projection/WithFlow/2040/sites_new_mip_withflow_2040.parquet`  
+- **Visualização**:  
+  - Jupyter cell `map_visualization.py` plota, lado a lado, os quatro mapas comparando pontos existentes (azul) e projetados (vermelho).
+
+### 2. Projeção **Scratch + Sem Pontos Existentes**
+- **O que**: parte do zero (ignora oferta atual) e resolve MIP bicritério, com metas ajustadas pela frota projetada por UF.
+- **Onde**: scripts em `Projection/WithoutFlow/`
+- **Arquivos gerados**:  
+  - `Projection/WithoutFlow/2025/sites_new_mip_scratch_2025.parquet`  
+  - `Projection/WithoutFlow/2030/sites_new_mip_scratch_2030.parquet`  
+  - `Projection/WithoutFlow/2035/sites_new_mip_scratch_2035.parquet`  
+  - `Projection/WithoutFlow/2040/sites_new_mip_scratch_2040.parquet`  
+- **Visualização**:  
+  - Jupyter cell `map_visualization.py` plota os quatro mapas apenas com os pontos projetados (vermelho), em um grid 2×2.
+
+---
+
+### Como rodar as projeções
+
+```bash
+# Projeções com pontos existentes (WithFlow)
+cd Scripts
+./Projections.sh
+```
+---
+
+### Como visualizar
+
+1. Abra o notebook `Projection/map_visualization.ipynb`  
+2. Execute as duas células:  
+   - **Map Visualization With Points**  
+   - **Map Visualization Without Points**  
+
 ## 🔗 Referências e Créditos
 
 	•	OSMnx / OpenStreetMap: osmnx para baixar e processar a malha viária.
 	•	ANTT: CKAN API para volume de tráfego em praças de pedágio.
 	•	DNIT: Planilha VMDA 2023 para fluxos de tráfego em rodovias.
+	•	Climate Scorecard: *The Growth of Electric Vehicles in Brazil: a sustainable revolution*.
 	•	OpenChargeMap: banco de dados de estações de carregamento existentes.
 	•	Geobr: limites estaduais (UF) para cobertura mínima por estado.

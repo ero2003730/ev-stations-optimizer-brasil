@@ -5,8 +5,8 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "$0")"/.. && pwd)"
 
 # Experimentos e nomes de scripts
-EXPS=(FirstExperiment SecondExperiment ThirdExperiment FourthExperiment)
-SCRIPTS=(01_mip_solver.py 02_mip_solver.py 03_mip_solver.py)
+EXPS=(FourthExperiment)
+SCRIPTS=(03_mip_solver.py)
 
 echo "Executando todos os experimentos em WithFlow..."
 

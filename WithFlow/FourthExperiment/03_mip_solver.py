@@ -153,6 +153,7 @@ def main():
     )
     status = prob.solve(solver)
     print("Status:", pulp.LpStatus[status])
+    print(f"CPU = {max(1, multiprocessing.cpu_count() - 2)}")
 
     # 9) extrai e salva solução
     chosen = [i for i in range(n_cand) if x[i].value() > 0.5]
