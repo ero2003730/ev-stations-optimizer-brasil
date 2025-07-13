@@ -126,7 +126,7 @@ $$
 ---
 
 ## 5. Experimentos “WithoutFlow”  
-Cobertura mínima **SEM** considerar fluxo de energia.
+Cobertura mínima **SEM** considerar fluxo de veículos.
 
 | Experimento           | Usa existentes? | Cobertura por UF? | Fluxo? |
 | --------------------- | :-------------: | :---------------: | :----: |
